@@ -1,5 +1,5 @@
 <?php
-$output = shell_exec('ls -lart');
+$output = shell_exec('casperjs/bin/casperjs');
 echo "<pre>$output</pre>";
 ?>
 <?php
