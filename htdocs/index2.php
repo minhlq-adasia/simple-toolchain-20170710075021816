@@ -40,9 +40,9 @@
 	                 );
 	}
 
-	$execute_script = '/Applications/XAMPP/xamppfiles/htdocs/simple-toolchain-20170710075021816/htdocs/test2.php';
-	// $execute_script = '/home/pipeline/231accdf-ca3f-43c1-a53b-f6a9d1d1db14/htdocs/test.js';
-    $result = liveExecuteCommand("/Applications/XAMPP/xamppfiles/bin/php ".$execute_script);
+	// $execute_script = '/Applications/XAMPP/xamppfiles/htdocs/simple-toolchain-20170710075021816/htdocs/test2.php';
+	$execute_script = '/home/pipeline/2f9f4a4b-316c-49cc-9735-f9f025637b6c/htdocs/test.js';
+    $result = liveExecuteCommand("php ".$execute_script);
     print_r($result);
 
 
