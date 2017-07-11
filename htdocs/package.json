@@ -11,11 +11,16 @@
     "type": "git",
     "url": "https://github.com/minhlq-adasia/simple-toolchain-20170710075021816.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "phantomjs"
+  ],
+  "author": "minhlq@adasiaholdings.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/minhlq-adasia/simple-toolchain-20170710075021816/issues"
   },
-  "homepage": "https://github.com/minhlq-adasia/simple-toolchain-20170710075021816"
+  "homepage": "https://github.com/minhlq-adasia/simple-toolchain-20170710075021816",
+  "dependencies": {
+    "lodash": "^4.0.1"
+  },
 }

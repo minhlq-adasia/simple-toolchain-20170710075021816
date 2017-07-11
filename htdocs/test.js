@@ -9,3 +9,5 @@ casper.start(BASE_URL);
 casper.then(function(){
   casper.echo('dsadsad');
 })
+
+casper.run();
