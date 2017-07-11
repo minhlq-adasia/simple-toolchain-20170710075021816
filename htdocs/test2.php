@@ -1,8 +1,8 @@
 <?php
 
 	echo 'result:';
-	$execute_script = '/Applications/XAMPP/xamppfiles/htdocs/simple-toolchain-20170710075021816/htdocs/test.js';
-    $result = shell_exec("casperjs ".$execute_script);
+	$execute_script = __DIR__ . '/test.js';
+    $result = shell_exec(__DIR__ . "/casperjs/bin/casperjs ".$execute_script);
     echo $result;
 
 ?>
