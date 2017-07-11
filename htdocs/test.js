@@ -7,7 +7,7 @@ var BASE_URL = 'https://www.facebook.com/';
 casper.start(BASE_URL);
 
 casper.then(function(){
-  casper.echo('dsadsad');
+  casper.echo('minh test');
 })
 
 casper.run();

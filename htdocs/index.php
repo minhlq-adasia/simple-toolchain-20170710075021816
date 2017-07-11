@@ -1,6 +1,9 @@
 <?php
-    shell_exec("casperjs test.js");
-    
+    $result = shell_exec("casperjs test.js");
+    echo '<pre>';
+    print_r($result);
+    echo '</pre>';
+
     require('test.php');
 ?>
 <html>
