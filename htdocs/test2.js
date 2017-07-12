@@ -1,7 +1,7 @@
 
 var casper = require('casper').create();
 
-casper.start('https://google.com', function() {
+casper.start('http://google.com', function() {
     this.echo('test 123456');
 });
 

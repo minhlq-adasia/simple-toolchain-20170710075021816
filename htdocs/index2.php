@@ -49,15 +49,19 @@
 
 
 	putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs-prebuilt/bin/phantomjs");
+	// putenv("PHANTOMJS_EXECUTABLE=/usr/local/bin/phantomjs");
 	// putenv('PATH=' . getenv('PATH'));
     $execute_script = __DIR__ . '/test.js';
-    // $execute_script = 'test2.js';    
+    // $execute_script = 'test.js';    
     // $result = shell_exec(__DIR__ . "/node_modules/casperjs/bin/casperjs ".$execute_script);
     // print_r($result);
 
     $execute_script = __DIR__."/node_modules/casperjs/bin/casperjs ".$execute_script; 
+    // $execute_script = "casperjs ".$execute_script; 
     $result = liveExecuteCommand($execute_script);
+    // $result = shell_exec("casperjs ".$execute_script);
     // print_r($result);
+
 
     file_put_contents(__DIR__."/data/data.json",json_encode($result));
 
