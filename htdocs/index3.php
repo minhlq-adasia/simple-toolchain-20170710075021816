@@ -1,5 +1,7 @@
 <?php
 
+putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs/bin/phantomjs");
+
 require_once 'vendor/autoload.php';
 
 use Browser\Casper;

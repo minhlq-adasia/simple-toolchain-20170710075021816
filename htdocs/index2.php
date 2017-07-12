@@ -40,16 +40,25 @@
 	                 );
 	}
 
-	$execute_script = __DIR__ . '/test2.php';
+	// $execute_script = __DIR__ . '/test2.php';
 
-    // $result = liveExecuteCommand("/Applications/XAMPP/xamppfiles/bin/php ".$execute_script);
-    $result = liveExecuteCommand("php ".$execute_script);
+ //    $result = liveExecuteCommand("/Applications/XAMPP/xamppfiles/bin/php ".$execute_script);
+ //    // $result = liveExecuteCommand("php ".$execute_script);
+ //    print_r($result);
+
+    $execute_script = __DIR__ . '/test.js';
+    // $execute_script = 'test.js';
+    putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs/bin/phantomjs");
+    // $result = shell_exec(__DIR__ . "/node_modules/casperjs/bin/casperjs ".$execute_script);
+    // print_r($result);
+
+    $execute_script = "node_modules/casperjs/bin/casperjs ".$execute_script; 
+    $result = liveExecuteCommand($execute_script);
     print_r($result);
 
+ //    $cmd = "node_modules/casperjs/bin/casperjs test.js";
 
- //    $cmd = "php ".$execute_script;
-
-	// while (@ ob_end_flush()); // end all output buffers if any
+ // 	while (@ ob_end_flush()); // end all output buffers if any
 
 	// $proc = popen($cmd, 'r');
 	// echo '<pre>';
