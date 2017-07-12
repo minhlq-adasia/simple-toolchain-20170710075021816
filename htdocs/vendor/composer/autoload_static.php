@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit9337decc922f2541e7229392eeb4ec46
 {
     public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'Cocur\\BackgroundProcess\\' => 24,
+        ),
         'B' => 
         array (
             'Browser\\' => 8,
@@ -14,6 +18,10 @@ class ComposerStaticInit9337decc922f2541e7229392eeb4ec46
     );
 
     public static $prefixDirsPsr4 = array (
+        'Cocur\\BackgroundProcess\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/background-process/src',
+        ),
         'Browser\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpcasperjs/phpcasperjs/src',

@@ -44,6 +44,9 @@ $casper->run();
 var_dump($casper->getRequestedUrls());
 
 // need to debug? just check the casper output
-var_dump($casper->getOutput());
+$output = $casper->getOutput();
+var_dump($output);
+
+file_put_contents(__DIR__."/data/data.json",json_encode($output));
 
 ?>

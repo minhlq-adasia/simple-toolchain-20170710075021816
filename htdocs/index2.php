@@ -46,16 +46,20 @@
  //    $result = liveExecuteCommand("/Applications/XAMPP/xamppfiles/bin/php ".$execute_script);
  //    // $result = liveExecuteCommand("php ".$execute_script);
  //    print_r($result);
+
+
 	putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs-prebuilt/bin/phantomjs");
+	// putenv('PATH=' . getenv('PATH'));
     $execute_script = __DIR__ . '/test.js';
-    // $execute_script = 'test.js';
-    
+    // $execute_script = 'test2.js';    
     // $result = shell_exec(__DIR__ . "/node_modules/casperjs/bin/casperjs ".$execute_script);
     // print_r($result);
 
     $execute_script = __DIR__."/node_modules/casperjs/bin/casperjs ".$execute_script; 
     $result = liveExecuteCommand($execute_script);
-    print_r($result);
+    // print_r($result);
+
+    file_put_contents(__DIR__."/data/data.json",json_encode($result));
 
  //    $cmd = "node_modules/casperjs/bin/casperjs test.js";
 

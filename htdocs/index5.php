@@ -1,13 +1,20 @@
 <?php
-require("vendor/autoload.php");
-use Browser\Casper;
-$casper = new Casper();
-//May need to set more options due to ssl issues
-$casper->setOptions(array('ignore-ssl-errors' => 'yes'));
-$casper->start('https://www.google.com');
-$casper->wait(5000);
-$output = $casper->getOutput();
-$casper->run();
-$html = $casper->getHtml();
-echo $html;
+	require_once 'vendor/autoload.php';
+	
+	use Cocur\BackgroundProcess\BackgroundProcess;
+
+	$execute_script = __DIR__ . '/test.js';
+	// $execute_script = __DIR__."/node_modules/casperjs/bin/casperjs ".$execute_script; 
+
+	$execute_script = '/Applications/XAMPP/xamppfiles/bin/php '.__DIR__.'/index2.php';
+
+	$process = new BackgroundProcess($execute_script);
+	$process->run();
+
+	echo sprintf('Crunching numbers in process %d', $process->getPid());
+	while ($process->isRunning()) {
+	    echo '.';
+	    sleep(1);
+	}
+	echo "\nDone.\n";
 ?>

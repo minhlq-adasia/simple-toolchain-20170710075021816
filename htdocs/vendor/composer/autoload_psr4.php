@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Cocur\\BackgroundProcess\\' => array($vendorDir . '/cocur/background-process/src'),
     'Browser\\' => array($vendorDir . '/phpcasperjs/phpcasperjs/src'),
 );
