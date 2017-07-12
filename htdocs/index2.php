@@ -1,4 +1,5 @@
 <?php
+	ini_set('display_errors', true);
 
 	// $execute_script = '/Applications/XAMPP/xamppfiles/htdocs/simple-toolchain-20170710075021816/htdocs/test2.php';
 	// // $execute_script = '/home/pipeline/231accdf-ca3f-43c1-a53b-f6a9d1d1db14/htdocs/test.js';
@@ -45,14 +46,14 @@
  //    $result = liveExecuteCommand("/Applications/XAMPP/xamppfiles/bin/php ".$execute_script);
  //    // $result = liveExecuteCommand("php ".$execute_script);
  //    print_r($result);
-
+	putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs-prebuilt/bin/phantomjs");
     $execute_script = __DIR__ . '/test.js';
     // $execute_script = 'test.js';
-    putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs/bin/phantomjs");
+    
     // $result = shell_exec(__DIR__ . "/node_modules/casperjs/bin/casperjs ".$execute_script);
     // print_r($result);
 
-    $execute_script = "node_modules/casperjs/bin/casperjs ".$execute_script; 
+    $execute_script = __DIR__."/node_modules/casperjs/bin/casperjs ".$execute_script; 
     $result = liveExecuteCommand($execute_script);
     print_r($result);
 
