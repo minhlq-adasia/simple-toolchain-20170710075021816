@@ -1,52 +1,45 @@
 <?php
 
-putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs/bin/phantomjs");
+	// $execute_script = '/Applications/XAMPP/xamppfiles/htdocs/simple-toolchain-20170710075021816/htdocs/test2.php';
 
-require_once 'vendor/autoload.php';
+	function liveExecuteCommand($cmd)
+	{
 
-use Browser\Casper;
+	    while (@ ob_end_flush()); // end all output buffers if any
 
-$casper = new Casper();
+	    $proc = popen("$cmd 2>&1 ; echo Exit status : $?", 'r');
 
-// forward options to phantomJS
-// for example to ignore ssl errors
-$casper->setOptions([
-    'ignore-ssl-errors' => 'yes'
-]);
+	    $live_output     = "";
+	    $complete_output = "";
 
-// navigate to google web page
-$casper->start('http://www.google.com');
+	    while (!feof($proc))
+	    {
+	        $live_output     = fread($proc, 4096);
+	        $complete_output = $complete_output . $live_output;
+	        echo "$live_output";
+	        @ flush();
+	    }
 
-// fill the search form and submit it with input's name
-$casper->fillForm(
-        'form[action="/search"]',
-        array(
-                'q' => 'search'
-        ),
-        true);
+	    pclose($proc);
 
-// or with javascript selectors:
-// $casper->fillFormSelectors(
-//         'form.form-class',
-//         array(
-//                 'input#email-id' => 'user-email',
-//                 'input#password-id'   =>  'user-password'
-//         ),true);
+	    // get exit status
+	    preg_match('/[0-9]+$/', $complete_output, $matches);
 
-// wait for 5 seconds (have a coffee)
-$casper->wait(5000);
+	    // return exit status and intended output
+	    return array (
+	                    'exit_status'  => intval($matches[0]),
+	                    'output'       => str_replace("Exit status : " . $matches[0], '', $complete_output)
+	                 );
+	}
+	// putenv("PHANTOMJS_EXECUTABLE=/usr/local/bin/phantomjs");
+	// putenv("PHANTOMJS_EXECUTABLE=/home/pipeline/.npm-global/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs");
 
-
-// run the casper script
-$casper->run();
-
-// check the urls casper get through
-var_dump($casper->getRequestedUrls());
-
-// need to debug? just check the casper output
-$output = $casper->getOutput();
-var_dump($output);
-
-file_put_contents(__DIR__."/data/data.json",json_encode($output));
-
+	$execute_script = __DIR__ . '/test.js';
+	// $execute_script = '/usr/local/bin/casperjs '.$execute_script;
+	// $execute_script = 'which casperjs';
+	$execute_script = '/home/pipeline/.npm-global/lib/node_modules/casperjs/bin/casperjs '.$execute_script;
+	// var_dump(shell_exec($execute_script));
+	// $result = shell_exec($execute_script);
+	$result = liveExecuteCommand($execute_script);
+	var_dump($result);	
 ?>
