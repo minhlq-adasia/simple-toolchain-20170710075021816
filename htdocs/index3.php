@@ -31,15 +31,35 @@
 	                    'output'       => str_replace("Exit status : " . $matches[0], '', $complete_output)
 	                 );
 	}
+	// /usr/lib/node_modules/casperjs/node_modules/phantomjs/lib/phantom/bin/
 	// putenv("PHANTOMJS_EXECUTABLE=/usr/local/bin/phantomjs");
 	// putenv("PHANTOMJS_EXECUTABLE=/home/pipeline/.npm-global/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs");
 
 	$execute_script = __DIR__ . '/test.js';
-	// $execute_script = '/usr/local/bin/casperjs '.$execute_script;
-	// $execute_script = 'which casperjs';
-	$execute_script = '/home/pipeline/.npm-global/lib/node_modules/casperjs/bin/casperjs '.$execute_script;
-	// var_dump(shell_exec($execute_script));
-	// $result = shell_exec($execute_script);
+	$execute_script = '/usr/bin/casperjs '.$execute_script;
 	$result = liveExecuteCommand($execute_script);
+	echo '<pre>';
 	var_dump($result);	
+	echo '</pre>';
+
+	echo '<pre>';
+	$execute_script = __DIR__ . '/test.js';
+	$execute_script = 'casperjs '.$execute_script;
+	$result = liveExecuteCommand($execute_script);
+	var_dump($result);
+	echo '</pre>';
+
+	echo '<pre>';
+	$execute_script = __DIR__ . '/test.js';
+	$execute_script = '/opt/casperjs '.$execute_script;
+	$result = liveExecuteCommand($execute_script);
+	var_dump($result);
+	echo '</pre>';
+
+	echo '<pre>';
+	$execute_script = __DIR__ . '/test.js';
+	$execute_script = '/usr/lib/node_modules/casperjs/bin/casperjs '.$execute_script;
+	$result = liveExecuteCommand($execute_script);
+	var_dump($result);
+	echo '</pre>';
 ?>
