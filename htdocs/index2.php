@@ -36,7 +36,7 @@
 
 	$execute_script = __DIR__ . '/test.js';
 	$execute_script = '/usr/local/bin/casperjs '.$execute_script;
-	$execute_script = 'which casperjs';
+	$execute_script = 'which casperjs && which phantomjs';
 	// $execute_script = '/home/pipeline/.npm-global/bin/casperjs '.$execute_script;
 	// var_dump(shell_exec($execute_script));
 	// $result = shell_exec($execute_script);
