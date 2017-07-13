@@ -31,12 +31,13 @@
 	                    'output'       => str_replace("Exit status : " . $matches[0], '', $complete_output)
 	                 );
 	}
-	// putenv("PHANTOMJS_EXECUTABLE=/usr/local/bin/phantomjs");
-	putenv("PHANTOMJS_EXECUTABLE=/home/pipeline/.npm-global/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs");
+	putenv("PHANTOMJS_EXECUTABLE=/usr/local/bin/phantomjs");
+	// putenv("PHANTOMJS_EXECUTABLE=/home/pipeline/.npm-global/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs");
 
 	$execute_script = __DIR__ . '/test.js';
-	// $execute_script = '/usr/local/bin/casperjs '.$execute_script;
-	$execute_script = '/home/pipeline/.npm-global/bin/casperjs '.$execute_script;
+	$execute_script = '/usr/local/bin/casperjs '.$execute_script;
+	$execute_script = 'which casperjs';
+	// $execute_script = '/home/pipeline/.npm-global/bin/casperjs '.$execute_script;
 	// var_dump(shell_exec($execute_script));
 	// $result = shell_exec($execute_script);
 	$result = liveExecuteCommand($execute_script);
