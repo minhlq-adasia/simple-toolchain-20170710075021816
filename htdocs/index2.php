@@ -1,16 +1,7 @@
 <?php
-	ini_set('display_errors', true);
 
 	// $execute_script = '/Applications/XAMPP/xamppfiles/htdocs/simple-toolchain-20170710075021816/htdocs/test2.php';
-	// // $execute_script = '/home/pipeline/231accdf-ca3f-43c1-a53b-f6a9d1d1db14/htdocs/test.js';
- //    $result = shell_exec("/Applications/XAMPP/xamppfiles/bin/php ".$execute_script);
- //    echo $result;
-	/**
-	 * Execute the given command by displaying console output live to the user.
-	 *  @param  string  cmd          :  command to be executed
-	 *  @return array   exit_status  :  exit status of the executed command
-	 *                  output       :  console output of the executed command
-	 */
+
 	function liveExecuteCommand($cmd)
 	{
 
@@ -40,41 +31,14 @@
 	                    'output'       => str_replace("Exit status : " . $matches[0], '', $complete_output)
 	                 );
 	}
-
-	// $execute_script = __DIR__ . '/test2.php';
-
- //    $result = liveExecuteCommand("/Applications/XAMPP/xamppfiles/bin/php ".$execute_script);
- //    // $result = liveExecuteCommand("php ".$execute_script);
- //    print_r($result);
-
-
-	putenv("PHANTOMJS_EXECUTABLE=".__DIR__."/node_modules/phantomjs-prebuilt/bin/phantomjs");
 	// putenv("PHANTOMJS_EXECUTABLE=/usr/local/bin/phantomjs");
-	// putenv('PATH=' . getenv('PATH'));
-    $execute_script = __DIR__ . '/test.js';
-    // $execute_script = 'test.js';    
-    // $result = shell_exec(__DIR__ . "/node_modules/casperjs/bin/casperjs ".$execute_script);
-    // print_r($result);
+	putenv("PHANTOMJS_EXECUTABLE=/home/pipeline/.npm-global/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs");
 
-    $execute_script = __DIR__."/node_modules/casperjs/bin/casperjs ".$execute_script; 
-    // $execute_script = "casperjs ".$execute_script; 
-    $result = liveExecuteCommand($execute_script);
-    // $result = shell_exec("casperjs ".$execute_script);
-    // print_r($result);
-
-
-    file_put_contents(__DIR__."/data/data.json",json_encode($result));
-
- //    $cmd = "node_modules/casperjs/bin/casperjs test.js";
-
- // 	while (@ ob_end_flush()); // end all output buffers if any
-
-	// $proc = popen($cmd, 'r');
-	// echo '<pre>';
-	// while (!feof($proc))
-	// {
-	//     echo fread($proc, 4096);
-	//     @ flush();
-	// }
-	// echo '</pre>';
+	$execute_script = __DIR__ . '/test.js';
+	// $execute_script = '/usr/local/bin/casperjs '.$execute_script;
+	$execute_script = '/home/pipeline/.npm-global/bin/casperjs '.$execute_script;
+	// var_dump(shell_exec($execute_script));
+	// $result = shell_exec($execute_script);
+	$result = liveExecuteCommand($execute_script);
+	var_dump($result);	
 ?>
